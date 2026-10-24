@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - GrooveSpace</title>
+
+    <!-- Estilos principales del proyecto -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/fuentes.css">
+</head>
+
+<body class="pagina-auth">
+
+    <!-- Encabezado -->
+    <header>
+        <a href="../index.html">
+            <img src="../img/logo.png" alt="GrooveSpace" class="logo">
+        </a>
+
+        <button id="toggle-dark" type="button" aria-label="Cambiar tema">
+            <!-- Conservá acá el contenido original de tu botón si tenía un ícono -->
+        </button>
+    </header>
+
+    <main>
+        <section class="contenedor-auth">
+
+            <h1>Crear cuenta</h1>
+            <p>Registrate para comenzar a reservar tu sala de ensayo.</p>
+
+            <!-- El formulario será procesado por js/auth.js -->
+            <form id="registroForm">
+
+                <div class="campo">
+                    <label for="nombre">Nombre</label>
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Ingresá tu nombre"
+                        autocomplete="given-name"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="apellido">Apellido</label>
+                    <input
+                        type="text"
+                        id="apellido"
+                        name="apellido"
+                        placeholder="Ingresá tu apellido"
+                        autocomplete="family-name"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="fecha">Fecha de nacimiento</label>
+                    <input
+                        type="date"
+                        id="fecha"
+                        name="fecha"
+                        autocomplete="bday"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="usuario">Nombre de usuario</label>
+                    <input
+                        type="text"
+                        id="usuario"
+                        name="usuario"
+                        placeholder="Elegí un nombre de usuario"
+                        minlength="3"
+                        maxlength="20"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="email">Correo electrónico</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="ejemplo@correo.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="campo campo-pass">
+                    <label for="password">Contraseña</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Mínimo 8 caracteres"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn-principal">
+                    Crear cuenta
+                </button>
+
+            </form>
+
+            <p class="texto-auth">
+                ¿Ya tenés una cuenta?
+                <a href="login.html">Iniciá sesión</a>
+            </p>
+
+        </section>
+    </main>
+
+    <!-- Navegación inferior: conservá los enlaces de tu versión original -->
+    <nav class="bottom-nav">
+        <!-- Pegá aquí el contenido original de tu bottom-nav -->
+    </nav>
+
+    <!-- Scripts -->
+    <script src="../js/script.js"></script>
+    <script src="../js/auth.js"></script>
+
+</body>
+</html>

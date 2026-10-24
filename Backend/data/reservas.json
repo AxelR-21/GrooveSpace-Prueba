@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1792779642702",
+    "usuarioId": "1792778843298",
+    "sala": "premium",
+    "fecha": "2026-10-24",
+    "horario": "19:25",
+    "duracion": 60,
+    "estado": "activa"
+  },
+  {
+    "id": "1792780067555",
+    "usuarioId": "1792778843298",
+    "sala": "premium",
+    "fecha": "2027-05-24",
+    "horario": "15:31",
+    "duracion": 60,
+    "estado": "activa"
+  },
+  {
+    "id": "1792780759266",
+    "usuarioId": "1792778843298",
+    "sala": "bateria",
+    "fecha": "2026-10-25",
+    "horario": "15:43",
+    "duracion": 60,
+    "estado": "activa"
+  }
+]

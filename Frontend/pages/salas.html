@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrooveSpace - Salas</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- Bueno, de nuievo, todo nuevo para celus -->
+    <link rel="stylesheet" href="../css/mobile.css" media="(max-width: 767px)">
+</head>
+<body>
+    <header>
+        <img src="../img/logo.png" alt="GrooveSpace Logo" class="logo">
+        <p>Tu lugar, tu música</p>
+        <button id="toggle-dark" class="btn-dark">🌙</button>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="reservar.html">Reservar</a></li>
+            <li><a href="mis_reservas.html">Mis Reservas</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <main class="salas-container">
+        <div class="m-encabezado">
+            <h2>Salas</h2>
+            <p>Conocé cada sala y mirá cuándo está ocupada.</p>
+        </div>
+        <!-- Las tarjetas de cada sala las arma el js, si se bugea avisa pibe -->
+        <div id="lista-salas"></div>
+    </main>
+
+    <footer>
+        <p>GrooveSpace - Tu lugar, tu música</p>
+    </footer>
+
+    <!-- Bottom floating nav cel -->
+    <nav class="bottom-nav">
+        <a href="../index.html" class="nav-item" id="nav-home">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </a>
+        <a href="mis_reservas.html" class="nav-item" id="nav-reservas">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </a>
+        <a href="reservar.html" class="nav-item nav-item-center" id="nav-reservar">
+            <div class="plus-btn">+</div>
+        </a>
+        <a href="salas.html" class="nav-item active" id="nav-salas">
+            <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </a>
+        <a href="login.html" class="nav-item" id="nav-login">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+    </nav>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

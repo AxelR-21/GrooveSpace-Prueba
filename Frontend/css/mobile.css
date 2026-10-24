@@ -1,0 +1,941 @@
+/* 
+   lo separe pq me parecio mas facil, como dije le robamos lo mas que pudimos a la app de ml/mp, esto entra en accion en 768
+ */
+
+/* cosita, el border lo toquetie 10 veces porque mi telefono por alguna razon se iba de pantalla. no se si era algo personal o era asi en general. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: clip;
+}
+
+/* colores en variables, asi el modo oscuro solo cambia estos valores */
+body {
+    --m-bg: #f4f3f8;
+    --m-card: #ffffff;
+    --m-texto: #1f1b2e;
+    --m-sub: #6b6880;
+    --m-borde: #e6e3ef;
+    --m-acento: #6a0dad;
+    --m-tint: #efe3f8;
+    --m-hero: #6a0dad;
+    --m-ok: #17794e;
+    --m-warn: #a15c00;
+}
+
+body.dark-mode {
+    --m-bg: #15151f;
+    --m-card: #23233a;
+    --m-texto: #f2f0fa;
+    --m-sub: #a9a6bd;
+    --m-borde: #34344f;
+    --m-acento: #c77dff;
+    --m-tint: rgba(199, 125, 255, 0.16);
+    --m-hero: #2a2347;
+    --m-ok: #5fd9a0;
+    --m-warn: #fbbf24;
+}
+
+/* fondo plano en vez del degradado, y lugar para la barra de abajo, quiero ver transparencias para la otra semana */
+body,
+body.dark-mode {
+    background: var(--m-bg);
+    color: var(--m-texto);
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    padding-bottom: 96px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+    outline: 2px solid var(--m-acento);
+    outline-offset: 2px;
+}
+
+/* Lo que es solo de pc se esconde y lo que es solo de cel se muestra */
+.solo-pc,
+footer {
+    display: none;
+}
+
+.solo-movil {
+    display: block;
+}
+
+/* 
+   HEADER compacto y pegado arriba (logo a la izquierda, modo oscuro a la derecha)
+ */
+body header,
+body.dark-mode header {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-radius: 0;
+    background-color: var(--m-hero);
+    box-shadow: none;
+}
+
+header p {
+    display: none;
+}
+
+header .logo {
+    width: auto;
+    height: 38px;
+    margin: 0;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+.btn-dark {
+    position: static;
+    font-size: 22px;
+    padding: 6px;
+}
+
+/* 
+   batitarjetas: las secciones ahora ocupan todo el ancho, con menos sombra
+ */
+body main section,
+body.dark-mode main section {
+    max-width: none;
+    margin: 12px 16px;
+    padding: 16px;
+    background-color: var(--m-card);
+    color: var(--m-texto);
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* styles.css le pone width al palo a .login-card en reservar, y con los margenes se
+   salia de la pantalla. Con width:auto el ancho se calcula descontando los margenes */
+body main section.login-card,
+body.dark-mode main section.login-card {
+    width: auto;
+    max-width: none;
+    margin: 12px 16px;
+    padding: 16px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* importante: este era el culpable ni se te ocurra tocar esto. styles.css tiene ".reservar-container .login-card { width:100% }"
+   y pesa mas que las reglas de arriba, por eso hay que repetirlo, si tenes una solucion avisame */
+body .reservar-container .login-card,
+body.dark-mode .reservar-container .login-card {
+    width: auto;
+    max-width: none;
+}
+
+main h2 {
+    font-size: 22px;
+    margin: 0 0 10px;
+}
+
+.registro-container,
+.reservas-container,
+.reservar-container {
+    display: block;
+    min-height: 0;
+}
+
+.auth-container {
+    display: block;
+}
+
+/* inputs grandes (16px evita el zoom automatico en iPhone) */
+.login-card label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--m-sub);
+}
+
+body .login-card input,
+body .login-card select,
+body.dark-mode .login-card input,
+body.dark-mode .login-card select {
+    width: 100%;
+    height: 52px;
+    box-sizing: border-box;
+    padding: 14px;
+    margin: 6px 0 14px;
+    font-size: 16px;
+    color: var(--m-texto);
+    background-color: var(--m-card);
+    border: 1px solid var(--m-borde);
+    border-radius: 12px;
+}
+
+body .login-card input:focus,
+body .login-card select:focus,
+body.dark-mode .login-card input:focus,
+body.dark-mode .login-card select:focus {
+    border-color: var(--m-acento);
+}
+
+/* Botones anchos y faciles de tocar (en modo oscuro quedan en neon) */
+body .btn-morado,
+body.dark-mode .btn-morado {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 14px;
+}
+
+body.dark-mode .btn-morado {
+    background-color: #c77dff;
+    color: #14101f;
+    box-shadow: 0 0 14px rgba(199, 125, 255, 0.55);
+}
+
+p#bienvenida {
+    margin: 0 0 12px;
+    color: var(--m-sub);
+}
+
+/* el link de "iniciar sesión" trae un color fijo desde el js (inline), por eso el !important */
+p#bienvenida a {
+    color: var(--m-acento) !important;
+}
+
+/* 
+   inicio. buscador, accesos rapidos y lista de salas
+ */
+.m-hero {
+    padding: 4px 16px 22px;
+    color: #fff;
+    background: var(--m-hero);
+    border-radius: 0 0 22px 22px;
+}
+
+.m-saludo {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+.m-hero h2 {
+    margin: 4px 0 14px;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+.m-buscador {
+    display: block;
+    padding: 13px 16px;
+    color: #6b6880;
+    font-size: 15px;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+.m-accesos {
+    display: flex;
+    gap: 12px;
+    padding: 18px 16px 8px;
+}
+
+.m-acceso {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    color: var(--m-texto);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.m-acceso span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 6px;
+    font-size: 24px;
+    background: var(--m-tint);
+    border-radius: 50%;
+}
+
+.m-titulo {
+    margin: 12px 16px 10px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.m-lista {
+    display: grid;
+    gap: 12px;
+    padding: 0 16px;
+}
+
+/* batitarjeta de sala: imagen a la izquierda, datos a la derecha se trato de hacer como producto, no se si sea correcto */
+.m-sala {
+    display: flex;
+    overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+    background: var(--m-card);
+    border: 1px solid var(--m-borde);
+    border-radius: 14px;
+    transition: transform 0.15s ease;
+}
+
+.m-sala:active {
+    transform: scale(0.985);
+}
+
+.m-sala-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 104px;
+    font-size: 38px;
+}
+
+.m-img-1 { background: linear-gradient(135deg, #6a0dad, #c77dff); }
+.m-img-2 { background: linear-gradient(135deg, #2a2347, #6a0dad); }
+.m-img-3 { background: linear-gradient(135deg, #9b59b6, #f0a6ca); }
+
+.m-sala-info {
+    padding: 12px 14px;
+}
+
+.m-sala-info h4 {
+    margin: 0 0 2px;
+    font-size: 16px;
+}
+
+.m-sala-info p {
+    margin: 0 0 4px;
+    font-size: 13px;
+    color: var(--m-sub);
+}
+
+.m-sala-info .m-precio {
+    margin-top: 6px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--m-texto);
+}
+
+.m-precio small {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--m-sub);
+}
+
+.m-sala-info .m-extra {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--m-ok);
+}
+
+/* 
+   solo escondi el boton para pc
+ */
+label[for="hora"],
+label[for="sala"] {
+    display: none;
+}
+
+body #hora,
+body.dark-mode #hora,
+body #sala,
+body.dark-mode #sala {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* la sala se hace una batitarjeta seleccionable ponele (se copian al select escondido #sala) */
+.m-salas {
+    display: grid;
+    gap: 8px;
+    margin: 6px 0 18px;
+}
+
+.m-sala-op {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    font: inherit;
+    text-align: left;
+    color: var(--m-texto);
+    background: var(--m-card);
+    border: 1.5px solid var(--m-borde);
+    border-radius: 14px;
+}
+
+.m-sala-op.activo {
+    background: var(--m-tint);
+    border-color: var(--m-acento);
+}
+
+.m-sala-op:disabled {
+    opacity: 0.5;
+}
+
+.m-sala-op .ico {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 44px;
+    height: 44px;
+    font-size: 22px;
+    border-radius: 12px;
+}
+
+.m-sala-op .txt {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.m-sala-op .txt b {
+    font-size: 15px;
+}
+
+.m-sala-op small {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--m-sub);
+}
+
+.m-sala-op .precio {
+    font-weight: 700;
+}
+
+.m-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 6px 0 18px;
+}
+
+.m-slot {
+    padding: 12px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--m-texto);
+    background: var(--m-card);
+    border: 1.5px solid var(--m-borde);
+    border-radius: 12px;
+}
+
+.m-slot.activo {
+    color: #fff;
+    background: var(--m-acento);
+    border-color: var(--m-acento);
+}
+
+body.dark-mode .m-slot.activo {
+    color: #14101f;
+}
+
+/* deshabilitado = apagado. solo los ocupados de verdad se tachan (.ocupado) */
+.m-slot:disabled {
+    opacity: 0.4;
+}
+
+.m-slot.ocupado {
+    text-decoration: line-through;
+}
+
+/* 
+   bueno la batitabla se convierte en tarjeta sin tocar el html como tal, es eso btw
+ */
+.reservas-container section.login-card,
+.reservar-container section.login-card,
+body.dark-mode .reservas-container section.login-card,
+body.dark-mode .reservar-container section.login-card {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+}
+
+.reservas-table,
+.reservas-table tbody,
+.reservas-table tr,
+.reservas-table td {
+    display: block;
+    width: 100%;
+}
+
+.reservas-table thead {
+    display: none;
+}
+
+.reservas-table tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 12px;
+    margin-bottom: 10px;
+    padding: 14px;
+    background: var(--m-card);
+    border: 1px solid var(--m-borde);
+    border-radius: 14px;
+}
+
+.reservas-table td {
+    width: auto;
+    padding: 0;
+    border: none;
+    text-align: left;
+}
+
+.reservas-table td:nth-child(1) { grid-column: 1; grid-row: 1; font-size: 17px; font-weight: 700; }
+.reservas-table td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; color: var(--m-sub); }
+.reservas-table td:nth-child(3) { grid-column: 1 / -1; grid-row: 3; color: var(--m-sub); }
+.reservas-table td:nth-child(4) { grid-column: 2; grid-row: 1; }
+.reservas-table td:nth-child(2)::before { content: "📅 "; }
+.reservas-table td:nth-child(3)::before { content: "🕒 "; }
+
+/* Cuando no hay reservas (la fila trae un solo td con colspan) */
+.reservas-table td[colspan] {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: center;
+    color: var(--m-sub);
+}
+
+.estado {
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 999px;
+}
+
+.estado-pendiente { color: var(--m-warn); background: rgba(245, 158, 11, 0.18); }
+.estado-aprobada  { color: var(--m-ok);   background: rgba(23, 121, 78, 0.16); }
+.estado-rechazada { color: #c0392b;       background: rgba(192, 57, 43, 0.14); }
+
+/* 
+   con esto no hay que tocar el html constantemente para la barra.
+ */
+body .bottom-nav,
+body.dark-mode .bottom-nav {
+    display: flex;
+    bottom: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    height: calc(62px + env(safe-area-inset-bottom));
+    padding: 0 0 env(safe-area-inset-bottom);
+    background: var(--m-card);
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.1);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+body .nav-item,
+body.dark-mode .nav-item {
+    flex: 1;
+    width: auto;
+    height: 100%;
+    gap: 2px;
+    color: var(--m-sub);
+    border-radius: 0;
+}
+
+.nav-item svg {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-item::after {
+    font-size: 10.5px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* el js le pone un color violeta fijo al icono de cuenta cuando hay sesion,
+   solo eso w */
+body .nav-item:not(.active),
+body.dark-mode .nav-item:not(.active) {
+    color: var(--m-sub) !important;
+}
+
+#nav-home::after     { content: "Inicio"; }
+#nav-reservas::after { content: "Mis reservas"; }
+#nav-salas::after    { content: "Salas"; }
+#nav-login::after    { content: "Cuenta"; }
+
+body .nav-item.active,
+body.dark-mode .nav-item.active {
+    color: var(--m-acento);
+    background: none;
+}
+
+/* El boton + del medio sobresale de la barra, no se si ponerle texto aun, creo que se ve mas estetico asi */
+body .nav-item-center,
+body.dark-mode .nav-item-center {
+    flex: 0 0 64px;
+    height: auto;
+    margin-top: -22px;
+}
+
+.nav-item-center::after {
+    content: none !important;
+}
+
+/* El menu de arriba de pc no se usa en cel */
+nav ul {
+    display: none !important;
+}
+
+/* 
+   LOGIN Y REGISTRO solo pra cel. Cabecera curva, formulario sin tarjeta y link al pie
+   Todo cuelga de body.pagina-auth, asi no afecta a las otras paginas
+ */
+body.pagina-auth header,
+body.dark-mode.pagina-auth header {
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 20px 54px;
+    text-align: center;
+    border-radius: 0 0 50% 50% / 0 0 40px 40px;
+}
+
+body.pagina-auth header .logo {
+    height: 64px;
+}
+
+body.pagina-auth header p {
+    display: block;
+    margin: 12px 0 0;
+    font-size: 15px;
+    color: #fff;
+    opacity: 0.9;
+}
+
+/* El boton de modo oscuro se queda arriba a la derecha dentro de la cabecera */
+body.pagina-auth .btn-dark {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+
+/* El formulario de login pierde la batitarjeta: queda directo sobre el fondo */
+body.pagina-auth main section.login-card,
+body.dark-mode.pagina-auth main section.login-card {
+    margin-top: 24px;
+    padding: 0 4px;
+    background: none;
+    box-shadow: none;
+}
+
+body.pagina-auth main section.login-card h2 {
+    margin: 0 0 16px;
+    font-size: 26px;
+}
+
+body.pagina-auth .login-card p {
+    margin: 16px 0 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+body.pagina-auth .login-card p a {
+    color: var(--m-acento);
+}
+
+/* Boton mostrar/ocultar encima del input de contraseña */
+.campo-pass {
+    position: relative;
+}
+
+body .login-card .campo-pass input {
+    padding-right: 88px;
+}
+
+.ojo {
+    position: absolute;
+    top: 6px;
+    right: 4px;
+    bottom: 14px;
+    padding: 0 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--m-acento);
+    background: none;
+    border: none;
+}
+
+/* "¿Todavía no tenés cuenta? Registrate" al pie del login */
+.m-registro {
+    margin: 22px 16px 0;
+    text-align: center;
+    font-size: 15px;
+    color: var(--m-sub);
+}
+
+.m-registro a {
+    font-weight: 700;
+    color: var(--m-acento);
+    text-decoration: none;
+}
+
+/* 
+   SALAS (info de cada sala + agenda anonima la prox le pongo nombres dde furros)
+ */
+main h3 {
+    margin: 0 0 12px;
+    font-size: 18px;
+}
+
+.m-encabezado {
+    margin: 20px 16px 4px;
+}
+
+.m-encabezado h2 {
+    margin: 0 0 4px;
+}
+
+.m-encabezado p {
+    margin: 0;
+    color: var(--m-sub);
+}
+
+/* La tarjeta de la sala va sin padding para que la franja de color llegue hasta los bordes */
+body main section.sala-detalle,
+body.dark-mode main section.sala-detalle {
+    padding: 0;
+    overflow: hidden;
+}
+
+.sd-cabecera {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    color: #fff;
+}
+
+.sd-icono {
+    font-size: 34px;
+}
+
+.sd-cabecera h3 {
+    margin: 0;
+    font-size: 19px;
+}
+
+.sd-cabecera p {
+    margin: 2px 0 0;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.sd-cabecera .precio {
+    margin-left: auto;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.sd-cabecera .precio small {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.sd-cuerpo {
+    padding: 14px 16px 16px;
+}
+
+.sd-equipo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+}
+
+.sd-equipo li {
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--m-acento);
+    background: var(--m-tint);
+    border-radius: 999px;
+}
+
+.sd-cuerpo h4 {
+    margin: 0 0 6px;
+    font-size: 14px;
+}
+
+.sd-agenda {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sd-agenda li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 0;
+    font-size: 14px;
+    border-bottom: 1px solid var(--m-borde);
+}
+
+.sd-agenda li:last-child {
+    border-bottom: none;
+}
+
+.sd-libre {
+    margin: 0;
+    font-size: 14px;
+    color: var(--m-sub);
+}
+
+.sd-privacidad {
+    margin: 8px 0 14px;
+    font-size: 12px;
+    color: var(--m-sub);
+}
+
+.sd-reservar {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.estado-ocupada { color: #c0392b;         background: rgba(192, 57, 43, 0.14); }
+.estado-tuya    { color: var(--m-acento); background: var(--m-tint); }
+
+/* 
+   Esta es la seccion cuenta (perfil, datos, historial y cerrar sesion)
+ */
+
+/* Secciones sueltas, sin fondo de tarjeta (historial y boton de salir) */
+body main section.sin-tarjeta,
+body.dark-mode main section.sin-tarjeta {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+}
+
+body main section.perfil,
+body.dark-mode main section.perfil {
+    text-align: center;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 10px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #6a0dad, #c77dff);
+    border-radius: 50%;
+}
+
+.perfil h2 {
+    margin: 0;
+}
+
+.perfil p {
+    margin: 2px 0 0;
+    color: var(--m-sub);
+}
+
+.perfil-stats {
+    display: flex;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--m-borde);
+}
+
+.perfil-stats div {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.perfil-stats b {
+    font-size: 22px;
+}
+
+.perfil-stats span {
+    font-size: 12px;
+    color: var(--m-sub);
+}
+
+/* Fila de preferencia tocable (modo oscuro) */
+.fila-config {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 14px;
+    font: inherit;
+    font-size: 16px;
+    color: var(--m-texto);
+    background: var(--m-card);
+    border: 1px solid var(--m-borde);
+    border-radius: 12px;
+}
+
+.fila-config span {
+    font-size: 14px;
+    color: var(--m-sub);
+}
+
+.nota {
+    margin: 10px 0 0;
+    font-size: 12px;
+    text-align: center;
+    color: var(--m-sub);
+}
+
+.btn-salir {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #c0392b;
+    background: none;
+    border: 1.5px solid currentColor;
+    border-radius: 14px;
+}
+
+body.dark-mode .btn-salir {
+    color: #ff8f80;
+}
+
+/* esto lo coloque por si usaban el dividir pantalla, entonces tenes mas angosto todo en general y no queda tan roto */
+@media (max-width: 340px) {
+    body .nav-item-center,
+    body.dark-mode .nav-item-center {
+        flex-basis: 52px;
+    }
+
+    .nav-item::after {
+        font-size: 9.5px;
+    }
+}

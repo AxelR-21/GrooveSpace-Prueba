@@ -1,0 +1,472 @@
+
+/* Logo de Nahuel */
+.logo {
+    width: 180px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Modo claro por defecto */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #f8f6fb, #eae6f7);
+    color: #2d2d2d;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header con transparencia */
+header {
+    position: relative;
+    background-color: rgba(106, 13, 173, 0.9);
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Botón de modo oscuro arriba a la derecha */
+.btn-dark {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.btn-dark:hover {
+    color: #9b59b6;
+}
+
+/* Navbar con estilo pill */
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #6a0dad;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #9b59b6;
+    color: #fff;
+}
+
+/* Secciones con tarjetas */
+main section {
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Footer discreto */
+footer {
+    background-color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+    color: #555;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* Botón morado general */
+.btn-morado {
+    background-color: #6a0dad;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-morado:hover {
+    background-color: #9b59b6;
+}
+
+/* Contenedor centrado tipo tarjeta */
+.login-card {
+    background-color: rgba(255,255,255,0.85);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 350px;
+    margin: 30px auto;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+/* Inputs estilizados */
+.login-card input,
+.login-card select {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.login-card input:focus,
+.login-card select:focus {
+    border-color: #6a0dad;
+}
+
+/* Contenedor con dos tarjetas lado a lado */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.login-card {
+    margin: 0 15px;
+}
+
+/* Modo oscuro */
+body.dark-mode {
+    background: linear-gradient(135deg, #1e1e2f, #2c2c3a);
+    color: #f0f0f0;
+}
+
+body.dark-mode header {
+    background-color: rgba(30, 30, 47, 0.9);
+    color: #fff;
+}
+
+body.dark-mode nav ul {
+    background-color: rgba(50,50,70,0.7);
+}
+
+body.dark-mode nav ul li a {
+    color: #f0f0f0;
+}
+
+body.dark-mode nav ul li a:hover {
+    background-color: #6a0dad;
+    color: #fff;
+}
+
+body.dark-mode main section {
+    background-color: rgba(40,40,60,0.9);
+    color: #fff;
+}
+
+body.dark-mode footer {
+    background-color: rgba(30,30,47,0.7);
+    color: #ccc;
+}
+
+body.dark-mode .login-card {
+    background-color: rgba(40,40,60,0.9);
+    color: #fff;
+}
+
+body.dark-mode .login-card input,
+body.dark-mode .login-card select {
+    background-color: #2c2c3a;
+    border: 1px solid #555;
+    color: #f0f0f0;
+}
+
+body.dark-mode .login-card input:focus,
+body.dark-mode .login-card select:focus {
+    border-color: #9b59b6;
+}
+
+body.dark-mode .btn-morado {
+    background-color: #9b59b6;
+    color: #fff;
+}
+
+body.dark-mode .btn-morado:hover {
+    background-color: #6a0dad;
+}
+
+body.dark-mode .btn-dark {
+    color: #f0f0f0;
+}
+
+/* Contenedores generales */
+.registro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.reservas-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 70vh;
+}
+
+.reservas-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.reservas-table th,
+.reservas-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.reservas-table th {
+    background-color: #6a0dad;
+    color: white;
+}
+
+.dark-mode .reservas-table th {
+    background-color: #444;
+}
+
+.reservar-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 70vh;
+}
+
+.reservar-container .login-card {
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Bottom floating nav: solo visible en celulares */
+.bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 380px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 8px;
+}
+
+body.dark-mode .bottom-nav {
+    background: rgba(40, 40, 60, 0.92);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #666;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+body.dark-mode .nav-item {
+    color: #bbb;
+}
+
+.nav-item.active {
+    color: #6a0dad;
+    background: rgba(106, 13, 173, 0.1);
+}
+
+body.dark-mode .nav-item.active {
+    color: #c77dff;
+    background: rgba(199, 125, 255, 0.15);
+}
+
+.nav-item-center {
+    width: 56px;
+    height: 56px;
+    margin-top: -18px;
+}
+
+.plus-btn {
+    width: 56px;
+    height: 56px;
+    background: #6a0dad;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 28px;
+    font-weight: 300;
+    box-shadow: 0 4px 16px rgba(106, 13, 173, 0.4);
+    transition: all 0.25s ease;
+}
+
+.plus-btn:hover,
+.nav-item-center:active .plus-btn {
+    background: #9b59b6;
+    transform: scale(1.08);
+}
+
+body.dark-mode .plus-btn {
+    background: #9b59b6;
+    box-shadow: 0 4px 16px rgba(155, 89, 182, 0.5);
+}
+
+.nav-item svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Elementos que solo existen en el celular */
+.solo-movil {
+    display: none;
+}
+
+/* Video en loop de la página de cuenta */
+.nota-video {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: 12px auto 0;
+    border-radius: 12px;
+}
+
+/* Agenda de disponibilidad de las salas */
+.sd-fecha {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin: 10px 0 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #2d2d2d;
+    font: inherit;
+}
+
+/* Referencias para identificar los horarios */
+.sd-referencias {
+    display: flex;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.sd-referencia {
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.sd-referencia.libre {
+    color: #168447;
+}
+
+.sd-referencia.ocupado {
+    color: #c0392b;
+}
+
+/* Distribución de los horarios */
+.sd-agenda {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+    margin: 15px 0;
+}
+
+/* Estilo general de cada horario */
+.sd-horario {
+    padding: 12px 8px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* Horarios disponibles */
+.sd-horario.libre {
+    background-color: #e2f5e9;
+    color: #168447;
+    border: 1px solid #b7e4c7;
+}
+
+/* Horarios reservados */
+.sd-horario.ocupado {
+    background-color: #fbe5e5;
+    color: #c0392b;
+    border: 1px solid #f1baba;
+}
+
+/* Ajustes para el modo oscuro */
+.dark-mode .sd-fecha {
+    background-color: #2c2c3a;
+    border-color: #555;
+    color: #f0f0f0;
+}
+
+.dark-mode .sd-horario.libre {
+    background-color: #183d2a;
+    color: #8ee0a9;
+    border-color: #286642;
+}
+
+.dark-mode .sd-horario.ocupado {
+    background-color: #482525;
+    color: #ffaaaa;
+    border-color: #783b3b;
+}
+
+/* Adaptación para celulares */
+@media (max-width: 767px) {
+
+    .sd-agenda {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sd-fecha {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}

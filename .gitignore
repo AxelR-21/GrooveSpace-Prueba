@@ -1,0 +1,19 @@
+
+# Dependencias de Node.js
+node_modules/
+
+# Variables de entorno y datos sensibles
+.env
+.env.*
+!.env.example
+
+# Archivos temporales y logs
+*.log
+npm-debug.log*
+
+# Archivos de Windows
+Thumbs.db
+Desktop.ini
+
+# Archivos de Visual Studio Code
+.vscode/
