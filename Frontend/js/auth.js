@@ -1,5 +1,5 @@
-// URL base de nuestra API de GrooveSpace.
-const API_URL = "http://localhost:3000/api/usuarios";
+// Dirección pública del backend desplegado en Render
+const API_URL = "https://groovespace-prueba.onrender.com/api/usuarios";
 
 
 // ==========================================

@@ -2,8 +2,8 @@
 // Esperamos a que el HTML esté cargado antes de ejecutar el código.
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Dirección del backend.
-    const API_URL = "http://localhost:3000/api";
+// Dirección pública del backend desplegado en Render.
+const API_URL = "https://groovespace-prueba.onrender.com/api";
 
     // Datos de las salas. El ID es el valor que recibe el backend.
     const SALAS = [
